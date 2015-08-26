@@ -4,10 +4,10 @@
 <:Body>
   <div class="row">
     <div class="col-md-4">
-      <h1>Todo List</h1>
+      <h1>{{ _todos.size }} Todo List</h1>
 
       <table class="todo-table">
-        {{ page._todos.each_with_index do |todo, index| }}
+        {{ _todos.each_with_index do |todo, index| }}
           <tr e-click="params._index = index" 
               class="{{ if (params._index || 0).to_i == index }}selected{{ end }}">
             <td><input type="checkbox" checked="{{ todo._completed }}" /></td>
