@@ -20,6 +20,32 @@ module Main
       _todos[(params._index || 0).to_i]
     end
 
+    def check_all
+      _todos.each do |todo|
+        todo._completed = true
+      end
+    end
+
+    def completed
+      _todos.count { |todo| todo._completed }
+    end
+
+    def incomplete
+      _todos.size.then do |size|
+        completed.then do |completed|
+          size - completed
+        end
+      end
+    end
+
+    def percent_complete
+      _todos.size.then do |size|
+        completed.then do |completed|
+          (completed / size.to_f * 100).round
+        end
+      end
+    end
+
     private
 
     # The main template contains a #template binding that shows another
